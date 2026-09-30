@@ -3,12 +3,11 @@ namespace esListBox
     public partial class Form1 : Form
     {
         List<string> origineDati = new List<string>();
+        string nomeFile;
 
         public Form1()
         {
             InitializeComponent();
-            caricaDati("Animali.txt");
-            Aggiorna();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -122,15 +121,35 @@ namespace esListBox
 
         private void buttonSalva_Click(object sender, EventArgs e)
         {
-            File.Delete("Animali.txt");
-
-            using (StreamWriter sw = new StreamWriter("Animali.txt", true))
+            using (StreamWriter sw = new StreamWriter(nomeFile, false))
             {
-                foreach(string s in origineDati)
+                foreach (string s in origineDati)
                 {
                     sw.WriteLine(s);
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSceltaFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                nomeFile = ofd.FileName;
+                caricaDati(nomeFile);
+                Aggiorna();
+            }
+            else
+            {
+                MessageBox.Show("Errore");
+            }
+
         }
     }
 }

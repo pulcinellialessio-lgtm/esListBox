@@ -37,6 +37,7 @@
             label2 = new Label();
             textBoxModifica = new TextBox();
             buttonSalva = new Button();
+            buttonSceltaFile = new Button();
             SuspendLayout();
             // 
             // listBox1
@@ -113,19 +114,30 @@
             // 
             // buttonSalva
             // 
-            buttonSalva.Location = new Point(67, 133);
+            buttonSalva.Location = new Point(67, 119);
             buttonSalva.Name = "buttonSalva";
             buttonSalva.Size = new Size(75, 23);
             buttonSalva.TabIndex = 8;
-            buttonSalva.Text = "salva";
+            buttonSalva.Text = "Salva";
             buttonSalva.UseVisualStyleBackColor = true;
             buttonSalva.Click += buttonSalva_Click;
+            // 
+            // buttonSceltaFile
+            // 
+            buttonSceltaFile.Location = new Point(67, 148);
+            buttonSceltaFile.Name = "buttonSceltaFile";
+            buttonSceltaFile.Size = new Size(75, 23);
+            buttonSceltaFile.TabIndex = 9;
+            buttonSceltaFile.Text = "Scegli file";
+            buttonSceltaFile.UseVisualStyleBackColor = true;
+            buttonSceltaFile.Click += buttonSceltaFile_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(926, 539);
+            Controls.Add(buttonSceltaFile);
             Controls.Add(buttonSalva);
             Controls.Add(label2);
             Controls.Add(textBoxModifica);
@@ -137,6 +149,7 @@
             Controls.Add(listBox1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -152,5 +165,6 @@
         private Label label2;
         private TextBox textBoxModifica;
         private Button buttonSalva;
+        private Button buttonSceltaFile;
     }
 }
