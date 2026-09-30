@@ -36,6 +36,7 @@
             label1 = new Label();
             label2 = new Label();
             textBoxModifica = new TextBox();
+            buttonSalva = new Button();
             SuspendLayout();
             // 
             // listBox1
@@ -65,6 +66,7 @@
             Rimuovi.TabIndex = 2;
             Rimuovi.Text = "Rimuovi";
             Rimuovi.UseVisualStyleBackColor = true;
+            Rimuovi.Click += Rimuovi_Click;
             // 
             // Modifica
             // 
@@ -74,6 +76,7 @@
             Modifica.TabIndex = 3;
             Modifica.Text = "Modifica";
             Modifica.UseVisualStyleBackColor = true;
+            Modifica.Click += Modifica_Click;
             // 
             // textBoxAggiungi
             // 
@@ -108,11 +111,22 @@
             textBoxModifica.Size = new Size(109, 23);
             textBoxModifica.TabIndex = 6;
             // 
+            // buttonSalva
+            // 
+            buttonSalva.Location = new Point(67, 133);
+            buttonSalva.Name = "buttonSalva";
+            buttonSalva.Size = new Size(75, 23);
+            buttonSalva.TabIndex = 8;
+            buttonSalva.Text = "salva";
+            buttonSalva.UseVisualStyleBackColor = true;
+            buttonSalva.Click += buttonSalva_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(926, 539);
+            Controls.Add(buttonSalva);
             Controls.Add(label2);
             Controls.Add(textBoxModifica);
             Controls.Add(label1);
@@ -137,5 +151,6 @@
         private Label label1;
         private Label label2;
         private TextBox textBoxModifica;
+        private Button buttonSalva;
     }
 }

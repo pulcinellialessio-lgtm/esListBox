@@ -7,8 +7,8 @@ namespace esListBox
         public Form1()
         {
             InitializeComponent();
-            Aggiorna();
             caricaDati("Animali.txt");
+            Aggiorna();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -18,7 +18,7 @@ namespace esListBox
 
         private void Aggiungi_Click(object sender, EventArgs e)
         {
-            
+
             if (verifica(textBoxAggiungi.Text) == false)
             {
                 MessageBox.Show("errore");
@@ -61,7 +61,7 @@ namespace esListBox
 
             return false;
         }
-        
+
         private void caricaDati(string nomeFile)
         {
             if (!File.Exists(nomeFile))
@@ -70,19 +70,65 @@ namespace esListBox
             }
             else
             {
-                using(StreamReader sr = new StreamReader(nomeFile))
+                using (StreamReader sr = new StreamReader(nomeFile))
                 {
                     while (!sr.EndOfStream)
                     {
                         string riga = sr.ReadLine();
 
-                        if(verifica(riga) == true)
+                        if (verifica(riga) == true)
                         {
                             riga = riga.Trim();
                             riga = riga.ToLower();
                             origineDati.Add(riga);
                         }
                     }
+                }
+            }
+        }
+
+        private void Rimuovi_Click(object sender, EventArgs e)
+        {
+            int indice = listBox1.SelectedIndex;
+
+            if (indice != -1)
+            {
+                origineDati.RemoveAt(indice);
+            }
+            else
+            {
+                MessageBox.Show("errore");
+            }
+
+            Aggiorna();
+        }
+
+        private void Modifica_Click(object sender, EventArgs e)
+        {
+            int indice = listBox1.SelectedIndex;
+
+            if (indice != -1)
+            {
+                origineDati[indice] = textBoxModifica.Text;
+                Aggiorna();
+            }
+            else
+            {
+                MessageBox.Show("errore");
+            }
+
+            Aggiorna();
+        }
+
+        private void buttonSalva_Click(object sender, EventArgs e)
+        {
+            File.Delete("Animali.txt");
+
+            using (StreamWriter sw = new StreamWriter("Animali.txt", true))
+            {
+                foreach(string s in origineDati)
+                {
+                    sw.WriteLine(s);
                 }
             }
         }
